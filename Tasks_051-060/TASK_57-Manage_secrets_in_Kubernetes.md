@@ -88,6 +88,25 @@ spec:
           - secret:
               name: media 
 ```
+Or other pod.yaml
+```
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: pod-secret-xfusion
+  spec:
+    containers:
+    - name: secret-container-xfusion
+      image: debian:latest
+      command: ["/bin/bash", "-c", "sleep infinity"]
+      volumeMounts:
+      - name: secret-volume
+        mountPath: /opt/demo
+    volumes:
+    - name: secret-volume
+      secret:
+        secretName: news
+```
 
 Apply.
 
